@@ -1,6 +1,6 @@
 # Max or min number
 from random import randrange
-rand_list = [randrange(20) for i in range(11)]
+rand_list = [randrange(25) for i in range(15)]
 num_min = rand_list[0]
 num_max = rand_list[0]
 
@@ -38,3 +38,13 @@ for i in rand_list:
 		print(i)
 		del coppy_list[coppy_list.index(i)]
 print(coppy_list)
+
+#four simbol in the center string
+a_z = "qwertyuiopasdfghjklzxcvbnm"
+string = ""
+for i in rand_list:
+	string += a_z[i]
+print(string)
+a = len(string)//2-2
+b = len(string)//2+2
+print(string[a:b])
