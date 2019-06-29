@@ -1,6 +1,6 @@
 # Max or min number
 from random import randrange
-rand_list = [randrange(20) for i in range(5)]
+rand_list = [randrange(20) for i in range(11)]
 num_min = rand_list[0]
 num_max = rand_list[0]
 
@@ -21,3 +21,20 @@ for i in range(6):
 	else:
 		o_1.append(1)
 print(o_1)
+
+#first and lost elemen list = 1 rest of us 0
+one_0_0_one = []
+for i in range(4):
+	if i == 0 or i == 3:
+		one_0_0_one.append(1)
+	else:
+		one_0_0_one.append(0)
+print(one_0_0_one)
+
+coppy_list = rand_list[:]
+# if the list contains the same values display them
+for i in rand_list:
+	if coppy_list.count(i) > 1:
+		print(i)
+		del coppy_list[coppy_list.index(i)]
+print(coppy_list)
