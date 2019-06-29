@@ -13,3 +13,11 @@ for i in range(len(rand_list)):
 
 
 print ("Min: ",num_min,"\n","Max: ",num_max)
+# list 0 and 1
+o_1 = []
+for i in range(6):
+	if i % 2 == 0 :
+		o_1.append(0)
+	else:
+		o_1.append(1)
+print(o_1)
