@@ -16,3 +16,18 @@ def more_less (num1, num2):#more or less
 
 x = lambda x, y : x % y#lambda function
 print(x(8,3))
+
+
+def decorator_function(func):
+    def wrapper():
+        print('Функция-обёртка!')
+        print('Оборачиваемая функция: {}'.format(func))
+        print('Выполняем обёрнутую функцию...')
+        func()
+        print('Выходим из обёртки')
+    return wrapper
+
+@decorator_function
+def hello_world():
+     print('Hello world!')
+print(hello_world())
