@@ -9,3 +9,6 @@ def even_odd(num):#even or odd
 		print('yes')
 	else:
 		print('no')
+
+def more_less (num1, num2):#more or less
+	return ('да' if num1 > 10 else 'нет')
