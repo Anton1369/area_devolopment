@@ -12,3 +12,7 @@ def even_odd(num):#even or odd
 
 def more_less (num1, num2):#more or less
 	return ('да' if num1 > 10 else 'нет')
+
+
+x = lambda x, y : x % y#lambda function
+print(x(8,3))
