@@ -13,13 +13,18 @@ last_upd = 0
 URL = 'https://api.telegram.org/bot871175772:AAHt36UUKeyyMAJHBTkFuvq7XtKmqed7Wpk/'
 
 def get_updates():
-    r = requests.get(f'{URL}getUpdates')
-    return r.json()
+    try:
+        r = requests.get(f'{URL}getUpdates')
+        return r.json()
+    except requests.exceptions.ConnectionError:
+        return print("Проблема с подлючение к верверу, проверте интернет или верность ссылки!")
+    except KeyError:
+        return print("Houston, we have a problem")
 
 class Message():
 
     def __init__(self):
-
+        pass
 
     def get_message(self):
         data = get_updates()
@@ -33,8 +38,8 @@ class Message():
 
             chat_id = last_obj['message']['chat']['id']
             message_text = last_obj['message']['text']
-            message = {'chat_id' : chat_id,
-                    'text' : message_text}
+            message = {'chat_id': chat_id,
+                    'text': message_text}
             return message
         return None
 
@@ -86,8 +91,10 @@ def main():
                 m.send_message(chat_id, "Введите курс и дату в формате: курс хххх-хх-xx")
 
             if re.match(r'\w{3}\s\d{4}-\d{2}-\d{2}', text):
-                if text[:3] in currency_name():
+                if text[:3].upper() in currency_name():
                     m.send_message(chat_id, get_date_mom(text))
+                else:
+                    m.send_message(chat_id, "что-то введенно не так")
         else:
             continue
 
