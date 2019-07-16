@@ -5,6 +5,7 @@ from mom import get_money
 from time import sleep
 from bs4 import BeautifulSoup
 from anecdot import word
+from new_git import response
 
 
 global last_upd
@@ -67,7 +68,8 @@ def main():
             bot_text = "/help - Помощь\n" \
                        "/currency - курсы валют на текущий день\n" \
                        "/currs_date - курсы валют на конкретное число\n" \
-                       "/anekdot - случайный анекдот"
+                       "/anekdot - случайный анекдот\n" \
+                       "/new_harb - новости харба за день"
 
 
             if text == '/help':
@@ -76,19 +78,20 @@ def main():
             if text == "/anekdot":
                 m.send_message(chat_id, word())
 
+            if text == "/new_harb":
+                for i in response():
+                    m.send_message(chat_id, i)
+
             if text == '/currency':
                 for k, v in currency_name().items():
                     m.send_message(chat_id, f"/{k} - {v}")
 
-            if text == 'currs_date':
-                m.send_message(chat_id, "Ввеедите в формате RUB 2019-10-10")
-
+            if text == "/currs_date":
+                m.send_message(chat_id, "Введите курс и дату в формате: курс хххх-хх-xx")
 
             if text[1:] in currency_name():
                 m.send_message(chat_id, get_money(text[1:]))
 
-            if text == "/currs_date":
-                m.send_message(chat_id, "Введите курс и дату в формате: курс хххх-хх-xx")
 
             if re.match(r'\w{3}\s\d{4}-\d{2}-\d{2}', text):
                 if text[:3].upper() in currency_name():
